@@ -1,12 +1,13 @@
 import { User, UsersState } from '@/utils/users';
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const initialState: UsersState = {
   users: [],
   filteredUsers: [],
   filter: { name: '', username: '', email: '', phone: '' },
-  loading: false,
+  loading: true,
   error: null, 
 };
 
@@ -34,6 +35,11 @@ const usersSlice = createSlice({
         );
       });
     },
+    removeUser(state, action: PayloadAction<number>) {
+      state.users = state.users.filter(user => user.id !== action.payload);
+      state.filteredUsers = state.filteredUsers.filter(user => user.id !== action.payload);
+      toast.success("You have successfully removed the user!")
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchUsers.pending, (state) => {
@@ -53,5 +59,5 @@ const usersSlice = createSlice({
   },
 });
 
-export const { setFilter } = usersSlice.actions;
+export const { setFilter, removeUser } = usersSlice.actions;
 export default usersSlice.reducer;

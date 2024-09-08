@@ -1,6 +1,6 @@
 export interface TableItem {
   label: string;
-  key: 'name' | 'username' | 'email' | 'phone';
+  key: 'name' | 'username' | 'email' | 'phone' | 'options';
 }
 
 export const tableHeaders: TableItem[] = [
@@ -8,4 +8,5 @@ export const tableHeaders: TableItem[] = [
   { label: 'Username', key: 'username' },
   { label: 'Email', key: 'email' },
   { label: 'Phone', key: 'phone' },
+  { label: 'Options', key: 'options' },
 ];

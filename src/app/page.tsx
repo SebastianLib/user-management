@@ -13,7 +13,7 @@ const HomePage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { loading, error } = useSelector((state: RootState) => state.users);
 
-  useEffect(() => {
+  useEffect(() => {    
     dispatch(fetchUsers());
   }, [dispatch]);
 
@@ -22,9 +22,10 @@ const HomePage = () => {
 
   return (
     <main className="flex flex-col justify-center items-center container mx-auto py-10 gap-10">
-      <h1 className="text-3xl font-bold text-orange-500">User Management</h1>
+      <h1 className="text-3xl md:text-4xl font-bold text-orange-500">User Management</h1>
 
-      <div className="w-full max-w-[1000px] space-y-4">
+      <div className="w-full flex flex-col space-y-4  items-center">
+
         <SearchInputs />
         <UsersTable />
       </div>
